@@ -1,0 +1,62 @@
+[[define "header"]]
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/statics/favicon.ico">
+    <title>[[.title]]</title>
+
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<!--
+
+- Meaning: （English）{use if condition to get angularjs api
+                      use range to loop add js file
+					   we need make more attension for the path    
+                      }
+           （中文）    {使用if 条件函数来做不同脚本调用 angularjs 包
+		              使用range来循环加载不同的脚本包
+					   路径的写法要注意
+		              }  
+
+- Note By {Yaoguang Luo,}  
+
+- Date : {2015/03/05,}
+  
+-->
+[[if .user.Googlecdn]]    
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+[[else]]    
+    <script src="/statics/js/angularjs/1.2.26/angular.min.js"></script>
+[[end]]
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/statics/css/basic.css">
+[[ if .style ]]
+		[[ range .style ]]    
+			<link rel="stylesheet" href="/statics/css/[[.]]">
+		[[end]]
+[[end]]
+
+
+[[ if .script ]]
+		[[ range .script ]]    
+			<script src="/statics/js/[[.]]"></script>
+		[[end]]
+[[end]]
+    <script type="text/javascript">
+      	if (typeof hljs != 'undefined') 
+		{
+        	hljs.initHighlightingOnLoad();
+      	}
+    </script>
+</head>
+
+<body>
+[[template "menu" .]]
+
+[[end]]

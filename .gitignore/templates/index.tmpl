@@ -1,0 +1,46 @@
+[[template "header" .]]
+
+<div ng-app="push_value">
+    <div ng-controller="push_value">
+
+    	<p> {{loopa.length}} with {{loopb.length}}</p>
+    	<div ng-repeat="c in filtered = (loopa | filter:q)"></div>
+    	<input type="search" class="form-control" ng-model="q" placeholder="test" autofocus />
+
+    	<table class="table">
+      		<tr ng-repeat="a in loopa | filter:q">
+       		 	<td>{{a.id}}</td>
+       		 	<td><a href="/restful/{{a.id}}">{{a.name}}</td>
+	//	test1
+				$stateProvider.state('users', {
+    				url: '/users',
+    				controller: 'UsersCtrl',
+    				params: {
+        					obj: hi intel
+    					}
+					})
+					
+      		</tr>
+    	</table>
+  	</div>
+</div>
+
+/*
+$stateProvider.state('users', {
+    url: '/users',
+    controller: 'UsersCtrl',
+    params: {
+        obj: null
+    }
+})
+
+function UserCtrl($stateParams) {
+    console.log($stateParams);
+}
+
+$state.go('users', {obj:yourObj});
+
+*/
+
+
+[[template "tail" .]]
